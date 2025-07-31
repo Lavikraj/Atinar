@@ -65,8 +65,8 @@ export function Contact() {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'Koramangala, Bangalore',
-      description: 'Karnataka 560034, India'
+      details: 'Faridabad, Haryana',
+      description: 'Haryana 121001, India'
     }
   ];
 
