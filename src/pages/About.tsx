@@ -37,23 +37,11 @@ export function About() {
   ];
 
   const team = [
-    {
-      name: 'Rajesh Kumar',
-      role: 'CEO & Founder',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-      description: 'Former tech lead at major cloud providers with 15+ years in distributed systems.'
-    },
-    {
-      name: 'Priya Sharma',
-      role: 'CTO',
-      image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
+       {
+      name: 'Praveen Kumar',
+      role: 'Founder',
+      image: 'https://icon-library.com/images/instagram-tag-icon/instagram-tag-icon-13.jpg',
       description: 'Expert in real-time systems and monitoring infrastructure with a passion for reliability.'
-    },
-    {
-      name: 'Arjun Patel',
-      role: 'Lead Developer',
-      image: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400',
-      description: 'Full-stack developer specializing in scalable web applications and API design.'
     }
   ];
 
