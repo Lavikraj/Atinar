@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply bg-white dark:bg-black text-gray-900 dark:text-dark-primary transition-colors duration-300;
+}
+
+/* Hide default cursor globally */
+* {
+  cursor: none;
+}
+
+/* Custom gradient background for GTA-style effect */
+/* Galaxy background pattern */
+.galaxy-background {
+  background: 
+    /* Large nebulae */
+    radial-gradient(ellipse at 20% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(255, 20, 147, 0.08) 0%, transparent 50%),
+    
+    /* Medium stars */
+    radial-gradient(circle at 25% 25%, white 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    
+    /* Small stars scattered */
+    radial-gradient(circle at 10% 60%, white 0.5px, transparent 0.5px),
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.8) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.9) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.7) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.5) 0.5px, transparent 0.5px),
+    
+    /* Base galaxy gradient */
+    linear-gradient(135deg, #000428 0%, #004e92 50%, #000428 100%);
+  
+  background-size: 
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    200px 200px,
+    300px 300px,
+    250px 250px,
+    180px 180px,
+    220px 220px,
+    150px 150px,
+    100px 100px,
+    120px 120px,
+    80px 80px,
+    90px 90px,
+    110px 110px,
+    100% 100%;
+  
+  animation: galaxyShift 60s ease-in-out infinite;
+}
+
+/* Dark mode galaxy */
+.dark .galaxy-background {
+  background: 
+    /* Large nebulae - darker theme */
+    radial-gradient(ellipse at 20% 50%, rgba(255, 122, 48, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(70, 92, 136, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(233, 227, 223, 0.05) 0%, transparent 50%),
+    
+    /* Medium stars */
+    radial-gradient(circle at 25% 25%, #E9E3DF 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(233, 227, 223, 0.8) 1px, transparent 1px),
+    radial-gradient(circle at 60% 40%, rgba(255, 122, 48, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, rgba(233, 227, 223, 0.9) 1px, transparent 1px),
+    radial-gradient(circle at 85% 30%, rgba(255, 122, 48, 0.7) 1px, transparent 1px),
+    
+    /* Small stars scattered */
+    radial-gradient(circle at 10% 60%, #E9E3DF 0.5px, transparent 0.5px),
+    radial-gradient(circle at 90% 10%, rgba(233, 227, 223, 0.8) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(255, 122, 48, 0.6) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 15% 15%, rgba(233, 227, 223, 0.9) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 70% 60%, rgba(255, 122, 48, 0.7) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 35% 35%, rgba(233, 227, 223, 0.5) 0.5px, transparent 0.5px),
+    
+    /* Base galaxy gradient - dark theme */
+    linear-gradient(135deg, #000000 0%, #465C88 50%, #000000 100%);
+  
+  background-size: 
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    200px 200px,
+    300px 300px,
+    250px 250px,
+    180px 180px,
+    220px 220px,
+    150px 150px,
+    100px 100px,
+    120px 120px,
+    80px 80px,
+    90px 90px,
+    110px 110px,
+    100% 100%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes galaxyShift {
+  0%, 100% { 
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; 
+  }
+  50% { 
+    background-position: 100% 100%, 50% 50%, 25% 75%, 10% 10%, 20% 20%, 15% 15%, 30% 30%, 25% 25%, 5% 5%, 12% 12%, 8% 8%, 18% 18%, 22% 22%, 28% 28%, 0% 0%; 
+  }
+}
+
+/* Text masking effect */
+.text-mask {
+  background: linear-gradient(135deg, #FF8343, #179BAE, #4158A6);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark mode text mask */
+.dark .text-mask {
+  background: linear-gradient(135deg, #E9E3DF, #FF7A30, #465C88);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 131, 67, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 131, 67, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Dark mode grid pattern */
+.dark .grid-pattern {
+  background-image: 
+    linear-gradient(rgba(233, 227, 223, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233, 227, 223, 0.1) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-light-secondary dark:bg-dark-background;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-light-accent dark:bg-dark-accent;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-light-dark dark:bg-dark-secondary;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Comic book style text outline */
+.comic-outline {
+  text-shadow: 
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    -2px 0 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    0 2px 0 #000;
+}
