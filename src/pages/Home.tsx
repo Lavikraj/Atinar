@@ -102,7 +102,7 @@ export function Home() {
               <span className="text-white dark:text-dark-primary drop-shadow-2xl">
                 Monitor your APIs.{' '}
               </span>
-              <span className="bg-gradient-to-r from-light-primary via-light-accent to-light-primary dark:from-dark-secondary dark:via-dark-primary dark:to-dark-secondary bg-clip-text text-transparent animate-pulse">
+              <span className="bg-gradient-to-r from-light-primary via-light-accent to-light-primary dark:from-dark-secondary dark:via-dark-primary dark:to-dark-secondary bg-clip-text text-transparent">
                 Never miss a heartbeat.
               </span>
               
@@ -153,7 +153,7 @@ export function Home() {
                 to="/about"
                 className="inline-block"
               >
-                <EnhancedButton variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 dark:border-dark-primary/30 dark:text-dark-primary dark:hover:bg-dark-accent/20">
+                <EnhancedButton variant="outline" size="lg" className="border-white/50 text-white hover:bg-white/20 dark:border-dark-primary/50 dark:text-dark-primary dark:hover:bg-dark-accent/30">
                   Learn More
                 </EnhancedButton>
               </Link>
@@ -163,8 +163,8 @@ export function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white dark:bg-black relative transition-colors duration-300">
-        <div className="absolute inset-0 bg-gradient-to-b from-light-secondary/50 dark:from-dark-accent/50 to-transparent"></div>
+      <section className="py-16 bg-light-secondary dark:bg-black relative transition-colors duration-300">
+        <div className="absolute inset-0 bg-gradient-to-b from-light-accent/10 dark:from-dark-accent/20 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -179,7 +179,7 @@ export function Home() {
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-light-primary to-light-accent dark:from-dark-secondary dark:to-dark-primary bg-clip-text text-transparent mb-2">
                   {stat.value}
                 </div>
-                <div className="text-light-dark dark:text-dark-primary font-medium">{stat.label}</div>
+                <div className="text-light-dark dark:text-dark-primary/90 font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -187,7 +187,7 @@ export function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-light-secondary dark:bg-dark-accent transition-colors duration-300">
+      <section className="py-20 bg-white dark:bg-dark-accent transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2
@@ -195,7 +195,7 @@ export function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-light-dark dark:text-dark-primary mb-4"
+              className="text-3xl md:text-4xl font-bold text-light-secondary dark:text-dark-primary mb-4"
             >
               Everything you need to monitor APIs
             </motion.h2>
@@ -204,7 +204,7 @@ export function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-xl text-light-dark/80 dark:text-dark-primary/80 max-w-2xl mx-auto"
+              className="text-xl text-light-secondary/80 dark:text-dark-primary/80 max-w-2xl mx-auto"
             >
               Comprehensive monitoring tools designed to keep your APIs running smoothly
             </motion.p>
@@ -220,10 +220,10 @@ export function Home() {
                 <div className="bg-light-primary/20 dark:bg-dark-secondary/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6 group-hover:bg-light-accent/20 dark:group-hover:bg-dark-primary/20 transition-colors">
                   <feature.icon className="h-6 w-6 text-light-primary dark:text-dark-secondary" />
                 </div>
-                <h3 className="text-xl font-semibold text-light-dark dark:text-dark-primary mb-3">
+                <h3 className="text-xl font-semibold text-light-secondary dark:text-dark-primary mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-light-dark/80 dark:text-dark-primary/80 leading-relaxed">
+                <p className="text-light-secondary/80 dark:text-dark-primary/80 leading-relaxed">
                   {feature.description}
                 </p>
               </AnimatedCard>

@@ -17,27 +17,27 @@ body {
 .galaxy-background {
   background: 
     /* Large nebulae */
-    radial-gradient(ellipse at 20% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 40% 80%, rgba(255, 20, 147, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(255, 70, 85, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(255, 70, 85, 0.1) 0%, transparent 50%),
     
     /* Medium stars */
-    radial-gradient(circle at 25% 25%, white 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
-    radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
-    radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.9) 1px, transparent 1px),
-    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    radial-gradient(circle at 25% 25%, #00D4FF 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle at 60% 40%, rgba(255, 70, 85, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, rgba(0, 212, 255, 0.9) 1px, transparent 1px),
+    radial-gradient(circle at 85% 30%, rgba(255, 70, 85, 0.7) 1px, transparent 1px),
     
     /* Small stars scattered */
-    radial-gradient(circle at 10% 60%, white 0.5px, transparent 0.5px),
-    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.8) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.9) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.7) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.5) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 10% 60%, #00D4FF 0.5px, transparent 0.5px),
+    radial-gradient(circle at 90% 10%, rgba(0, 212, 255, 0.8) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(255, 70, 85, 0.6) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.9) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 70% 60%, rgba(255, 70, 85, 0.7) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 35% 35%, rgba(0, 212, 255, 0.5) 0.5px, transparent 0.5px),
     
     /* Base galaxy gradient */
-    linear-gradient(135deg, #000428 0%, #004e92 50%, #000428 100%);
+    linear-gradient(135deg, #0F1419 0%, #1E2328 50%, #0F1419 100%);
   
   background-size: 
     100% 100%,
@@ -63,24 +63,24 @@ body {
 .dark .galaxy-background {
   background: 
     /* Large nebulae - darker theme */
-    radial-gradient(ellipse at 20% 50%, rgba(255, 122, 48, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(70, 92, 136, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 40% 80%, rgba(233, 227, 223, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(255, 70, 85, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(255, 251, 245, 0.05) 0%, transparent 50%),
     
     /* Medium stars */
-    radial-gradient(circle at 25% 25%, #E9E3DF 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(233, 227, 223, 0.8) 1px, transparent 1px),
-    radial-gradient(circle at 60% 40%, rgba(255, 122, 48, 0.6) 1px, transparent 1px),
-    radial-gradient(circle at 30% 70%, rgba(233, 227, 223, 0.9) 1px, transparent 1px),
-    radial-gradient(circle at 85% 30%, rgba(255, 122, 48, 0.7) 1px, transparent 1px),
+    radial-gradient(circle at 25% 25%, #FFFBF5 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 251, 245, 0.8) 1px, transparent 1px),
+    radial-gradient(circle at 60% 40%, rgba(255, 70, 85, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, rgba(255, 251, 245, 0.9) 1px, transparent 1px),
+    radial-gradient(circle at 85% 30%, rgba(255, 70, 85, 0.7) 1px, transparent 1px),
     
     /* Small stars scattered */
-    radial-gradient(circle at 10% 60%, #E9E3DF 0.5px, transparent 0.5px),
-    radial-gradient(circle at 90% 10%, rgba(233, 227, 223, 0.8) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 50% 90%, rgba(255, 122, 48, 0.6) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 15% 15%, rgba(233, 227, 223, 0.9) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 70% 60%, rgba(255, 122, 48, 0.7) 0.5px, transparent 0.5px),
-    radial-gradient(circle at 35% 35%, rgba(233, 227, 223, 0.5) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 10% 60%, #FFFBF5 0.5px, transparent 0.5px),
+    radial-gradient(circle at 90% 10%, rgba(255, 251, 245, 0.8) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 90%, rgba(255, 70, 85, 0.6) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 15% 15%, rgba(255, 251, 245, 0.9) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 70% 60%, rgba(255, 70, 85, 0.7) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 35% 35%, rgba(255, 251, 245, 0.5) 0.5px, transparent 0.5px),
     
     /* Base galaxy gradient - dark theme */
     linear-gradient(135deg, #000000 0%, #465C88 50%, #000000 100%);
@@ -120,7 +120,7 @@ body {
 
 /* Text masking effect */
 .text-mask {
-  background: linear-gradient(135deg, #FF8343, #179BAE, #4158A6);
+  background: linear-gradient(135deg, #FF4655, #00D4FF, #0F1419);
   background-size: 400% 400%;
   animation: gradientShift 10s ease infinite;
   -webkit-background-clip: text;
@@ -130,7 +130,7 @@ body {
 
 /* Dark mode text mask */
 .dark .text-mask {
-  background: linear-gradient(135deg, #E9E3DF, #FF7A30, #465C88);
+  background: linear-gradient(135deg, #FFFBF5, #FF4655, #00D4FF);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -139,16 +139,16 @@ body {
 /* Grid pattern overlay */
 .grid-pattern {
   background-image: 
-    linear-gradient(rgba(255, 131, 67, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 131, 67, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255, 70, 85, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 70, 85, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 /* Dark mode grid pattern */
 .dark .grid-pattern {
   background-image: 
-    linear-gradient(rgba(233, 227, 223, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(233, 227, 223, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255, 251, 245, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 251, 245, 0.1) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */

@@ -17,8 +17,8 @@ export function EnhancedButton({
   const baseClasses = "relative overflow-hidden font-semibold rounded-xl transition-all duration-300 transform";
   
   const variants = {
-    primary: "bg-light-primary dark:bg-dark-secondary text-white dark:text-black hover:bg-light-accent dark:hover:bg-dark-primary shadow-lg hover:shadow-xl",
-    secondary: "bg-light-secondary dark:bg-dark-accent text-light-dark dark:text-dark-primary hover:bg-light-accent/20 dark:hover:bg-dark-secondary/20",
+    primary: "bg-light-primary dark:bg-dark-secondary text-white dark:text-black hover:bg-light-accent dark:hover:bg-light-primary shadow-lg hover:shadow-xl",
+    secondary: "bg-light-secondary dark:bg-dark-accent text-light-secondary dark:text-dark-primary hover:bg-light-accent/20 dark:hover:bg-dark-secondary/20",
     outline: "border-2 border-light-primary dark:border-dark-secondary text-light-primary dark:text-dark-secondary hover:bg-light-primary dark:hover:bg-dark-secondary hover:text-white dark:hover:text-black"
   };
 

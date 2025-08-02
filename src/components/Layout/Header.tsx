@@ -42,8 +42,8 @@ export function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`nav-link interactive text-sm font-medium transition-colors hover:text-light-accent dark:hover:text-dark-secondary ${
-                  isActive(item.href) ? 'text-light-accent dark:text-dark-secondary' : 'text-light-dark dark:text-dark-primary'
+                className={`interactive block text-sm font-medium transition-colors hover:text-light-accent dark:hover:text-dark-secondary ${
+                  isActive(item.href) ? 'text-light-accent dark:text-dark-secondary' : 'text-light-secondary dark:text-dark-primary'
                 }`}
               >
                 {item.name}
@@ -57,13 +57,13 @@ export function Header() {
               <>
                 <Link
                   to="/dashboard"
-                  className="nav-link interactive text-sm font-medium text-light-dark dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
+                  className="nav-link interactive text-sm font-medium text-light-secondary dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
                 >
                   Dashboard
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="interactive text-sm font-medium text-light-dark dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
+                  className="interactive text-sm font-medium text-light-secondary dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
                 >
                   Sign Out
                 </button>
@@ -72,13 +72,13 @@ export function Header() {
               <>
                 <Link
                   to="/login"
-                  className="nav-link interactive text-sm font-medium text-light-dark dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
+                  className="nav-link interactive text-sm font-medium text-light-secondary dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="interactive bg-light-primary dark:bg-dark-secondary text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-light-accent dark:hover:bg-dark-primary transition-colors"
+                  className="interactive bg-light-primary dark:bg-dark-secondary text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-light-accent dark:hover:bg-light-primary transition-colors"
                 >
                   Sign Up
                 </Link>
@@ -129,7 +129,7 @@ export function Header() {
                   <Link
                     to="/dashboard"
                     onClick={() => setIsMenuOpen(false)}
-                    className="interactive block text-sm font-medium text-light-dark dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
+                    className="interactive block text-sm font-medium text-light-secondary dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
                   >
                     Dashboard
                   </Link>
@@ -138,7 +138,7 @@ export function Header() {
                       handleSignOut();
                       setIsMenuOpen(false);
                     }}
-                    className="interactive block text-sm font-medium text-light-dark dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
+                    className="interactive block text-sm font-medium text-light-secondary dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
                   >
                     Sign Out
                   </button>
@@ -148,14 +148,14 @@ export function Header() {
                   <Link
                     to="/login"
                     onClick={() => setIsMenuOpen(false)}
-                    className="interactive block text-sm font-medium text-light-dark dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
+                    className="interactive block text-sm font-medium text-light-secondary dark:text-dark-primary hover:text-light-accent dark:hover:text-dark-secondary transition-colors"
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
                     onClick={() => setIsMenuOpen(false)}
-                    className="interactive block bg-light-primary dark:bg-dark-secondary text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-light-accent dark:hover:bg-dark-primary transition-colors text-center"
+                    className="interactive block bg-light-primary dark:bg-dark-secondary text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-light-accent dark:hover:bg-light-primary transition-colors text-center"
                   >
                     Sign Up
                   </Link>

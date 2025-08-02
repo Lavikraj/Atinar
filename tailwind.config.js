@@ -7,17 +7,17 @@ export default {
       colors: {
         // Light mode palette
         light: {
-          primary: '#FF8343',    // Orange
-          secondary: '#F1DEC6',  // Cream
-          accent: '#179BAE',     // Teal
-          dark: '#4158A6',       // Blue
+          primary: '#FF4655',    // Valorant Red
+          secondary: '#0F1419',  // Dark Navy
+          accent: '#00D4FF',     // Electric Blue
+          dark: '#1E2328',       // Charcoal
         },
         // Dark mode palette
         dark: {
-          primary: '#E9E3DF',    // Light beige
-          secondary: '#FF7A30',  // Orange
-          accent: '#465C88',     // Blue-gray
-          background: '#000000', // Black
+          primary: '#FFFBF5',    // Off White
+          secondary: '#FF4655',  // Valorant Red
+          accent: '#0F1419',     // Dark Navy
+          background: '#000000', // Pure Black
         }
       }
     },
