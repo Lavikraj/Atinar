@@ -173,17 +173,6 @@ npx imagemin ./assets/images/* --out-dir=./assets/images/
 
 ---
 
-## 📬 Internal Contacts
-
-| Concern               | Contact Email        |
-|------------------------|----------------------|
-| Web Frontend Dev       | frontend@atinar.in   |
-| DevOps/Deployment      | devops@atinar.in     |
-| Design Queries         | design@atinar.in     |
-| API Coordination       | api@atinar.in        |
-
----
-
 ## 📅 Last Updated
 
 **August 2025**  
