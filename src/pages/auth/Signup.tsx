@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Eye, EyeOff, UserPlus, Activity } from 'lucide-react';
+import { Eye, EyeOff, UserPlus, Activity, Shield, Zap, CheckCircle } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 
 const signupSchema = z.object({
@@ -54,157 +54,256 @@ export function Signup() {
     }
   };
 
+  const benefits = [
+    {
+      icon: CheckCircle,
+      title: 'Free Forever Plan',
+      description: '3 API endpoints, 5-minute intervals, 7 days retention'
+    },
+    {
+      icon: Shield,
+      title: 'Enterprise Security',
+      description: 'Your data is protected with bank-grade encryption'
+    },
+    {
+      icon: Zap,
+      title: 'Instant Setup',
+      description: 'Start monitoring your APIs in under 30 seconds'
+    },
+    {
+      icon: Activity,
+      title: '24/7 Monitoring',
+      description: 'Never miss an outage with real-time alerts'
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-md w-full space-y-8"
-      >
-        <div className="bg-white p-8 rounded-2xl shadow-xl">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <Link to="/" className="flex items-center justify-center space-x-2 mb-6">
-              <img 
-                src="/Untitled-1.png" 
-                alt="ATINAR" 
-                className="h-10 w-auto"
-              />
-            </Link>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Create your account</h2>
-            <p className="text-gray-600">Start monitoring your APIs in minutes</p>
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        {/* Left Side - Benefits & Branding */}
+        <div className="hidden lg:flex items-center justify-center bg-gradient-to-br from-light-secondary to-light-secondary/50 dark:from-dark-accent to-dark-accent/50 p-12 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-gradient-to-r from-light-primary/20 to-light-accent/20 dark:from-dark-secondary/20 to-dark-primary/20"></div>
+            <div className="grid-pattern absolute inset-0"></div>
           </div>
 
-          {/* Error Message */}
-          {error && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="relative z-10 max-w-lg text-center"
+          >
+            <div className="mb-12">
+              <h3 className="text-4xl font-bold text-light-dark dark:text-dark-primary mb-4">
+                Start Monitoring Today
+              </h3>
+              <p className="text-xl text-light-dark/80 dark:text-dark-primary/80">
+                Join the growing community of Indian developers and startups 
+                who trust ATINAR for reliable API monitoring.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                  className="flex items-start space-x-4 text-left"
+                >
+                  <div className="bg-light-primary/20 dark:bg-dark-secondary/20 p-3 rounded-xl">
+                    <benefit.icon className="h-6 w-6 text-light-primary dark:text-dark-secondary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-light-dark dark:text-dark-primary mb-1">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-light-dark/80 dark:text-dark-primary/80">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6"
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="mt-12 p-6 bg-white/10 dark:bg-black/10 backdrop-blur-sm rounded-2xl border border-light-secondary/20 dark:border-dark-accent/20"
             >
-              <p className="text-red-800 text-sm">{error}</p>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-light-primary dark:text-dark-secondary mb-2">
+                  ₹0
+                </div>
+                <div className="text-light-dark dark:text-dark-primary font-semibold mb-2">
+                  Forever Free Plan
+                </div>
+                <div className="text-sm text-light-dark/80 dark:text-dark-primary/80">
+                  No credit card required • Start monitoring immediately
+                </div>
+              </div>
             </motion.div>
-          )}
-
-          {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Username (Optional)
-              </label>
-              <input
-                {...register('username')}
-                type="text"
-                id="username"
-                autoComplete="username"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                placeholder="Choose a username"
-              />
-              {errors.username && (
-                <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Email Address
-              </label>
-              <input
-                {...register('email')}
-                type="email"
-                id="email"
-                autoComplete="email"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                placeholder="your.email@example.com"
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  {...register('password')}
-                  type={showPassword ? 'text' : 'password'}
-                  id="password"
-                  autoComplete="new-password"
-                  className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="Create a password"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                >
-                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                </button>
-              </div>
-              {errors.password && (
-                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
-              )}
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                Confirm Password
-              </label>
-              <div className="relative">
-                <input
-                  {...register('confirmPassword')}
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  id="confirmPassword"
-                  autoComplete="new-password"
-                  className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                  placeholder="Confirm your password"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                >
-                  {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                </button>
-              </div>
-              {errors.confirmPassword && (
-                <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-            >
-              {isLoading ? (
-                <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                  <span>Creating account...</span>
-                </>
-              ) : (
-                <>
-                  <UserPlus className="h-5 w-5" />
-                  <span>Create Account</span>
-                </>
-              )}
-            </button>
-          </form>
-
-          {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-600">
-              Already have an account?{' '}
-              <Link to="/login" className="text-blue-600 hover:text-blue-700 font-medium">
-                Sign in
-              </Link>
-            </p>
-          </div>
+          </motion.div>
         </div>
-      </motion.div>
+
+        {/* Right Side - Signup Form */}
+        <div className="flex items-center justify-center p-8 lg:p-12">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="w-full max-w-md space-y-8"
+          >
+            {/* Header */}
+            <div className="text-center">
+              <Link to="/" className="flex items-center justify-center space-x-2 mb-8">
+                <img 
+                  src="/Untitled-1.png" 
+                  alt="ATINAR" 
+                  className="h-12 w-auto dark:filter dark:brightness-0 dark:invert"
+                />
+              </Link>
+              <h2 className="text-3xl font-bold text-light-dark dark:text-dark-primary mb-2">
+                Create your account
+              </h2>
+              <p className="text-light-dark/80 dark:text-dark-primary/80">
+                Start monitoring your APIs in minutes
+              </p>
+            </div>
+
+            {/* Error Message */}
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4"
+              >
+                <p className="text-red-800 dark:text-red-300 text-sm">{error}</p>
+              </motion.div>
+            )}
+
+            {/* Form */}
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div>
+                <label htmlFor="username" className="block text-sm font-medium text-light-dark dark:text-dark-primary mb-2">
+                  Username (Optional)
+                </label>
+                <input
+                  {...register('username')}
+                  type="text"
+                  id="username"
+                  autoComplete="username"
+                  className="w-full px-4 py-3 border border-light-secondary dark:border-dark-accent bg-white dark:bg-black text-light-dark dark:text-dark-primary rounded-lg focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-secondary focus:border-transparent transition-colors"
+                  placeholder="Choose a username"
+                />
+                {errors.username && (
+                  <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-light-dark dark:text-dark-primary mb-2">
+                  Email Address
+                </label>
+                <input
+                  {...register('email')}
+                  type="email"
+                  id="email"
+                  autoComplete="email"
+                  className="w-full px-4 py-3 border border-light-secondary dark:border-dark-accent bg-white dark:bg-black text-light-dark dark:text-dark-primary rounded-lg focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-secondary focus:border-transparent transition-colors"
+                  placeholder="your.email@example.com"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-light-dark dark:text-dark-primary mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    {...register('password')}
+                    type={showPassword ? 'text' : 'password'}
+                    id="password"
+                    autoComplete="new-password"
+                    className="w-full px-4 py-3 pr-12 border border-light-secondary dark:border-dark-accent bg-white dark:bg-black text-light-dark dark:text-dark-primary rounded-lg focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-secondary focus:border-transparent transition-colors"
+                    placeholder="Create a password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-light-dark/60 dark:text-dark-primary/60 hover:text-light-dark dark:hover:text-dark-primary"
+                  >
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
+                </div>
+                {errors.password && (
+                  <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-light-dark dark:text-dark-primary mb-2">
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <input
+                    {...register('confirmPassword')}
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    id="confirmPassword"
+                    autoComplete="new-password"
+                    className="w-full px-4 py-3 pr-12 border border-light-secondary dark:border-dark-accent bg-white dark:bg-black text-light-dark dark:text-dark-primary rounded-lg focus:ring-2 focus:ring-light-primary dark:focus:ring-dark-secondary focus:border-transparent transition-colors"
+                    placeholder="Confirm your password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-light-dark/60 dark:text-dark-primary/60 hover:text-light-dark dark:hover:text-dark-primary"
+                  >
+                    {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
+                </div>
+                {errors.confirmPassword && (
+                  <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-light-primary dark:bg-dark-secondary text-white dark:text-black px-6 py-3 rounded-lg font-semibold hover:bg-light-accent dark:hover:bg-light-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              >
+                {isLoading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white dark:border-black"></div>
+                    <span>Creating account...</span>
+                  </>
+                ) : (
+                  <>
+                    <UserPlus className="h-5 w-5" />
+                    <span>Create Account</span>
+                  </>
+                )}
+              </button>
+            </form>
+
+            {/* Footer */}
+            <div className="text-center">
+              <p className="text-light-dark/80 dark:text-dark-primary/80">
+                Already have an account?{' '}
+                <Link to="/login" className="text-light-primary dark:text-dark-secondary hover:text-light-accent dark:hover:text-light-primary font-medium">
+                  Sign in
+                </Link>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }
