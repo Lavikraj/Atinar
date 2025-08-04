@@ -6,51 +6,51 @@ export function Testimonials() {
   const testimonials = [
     {
       id: '1',
-      name: 'Sarah Chen',
-      company: 'TechFlow Inc.',
+      name: 'Arjun Sharma',
+      company: 'TechVibe Solutions',
       rating: 5,
-      message: 'ATINAR has been a game-changer for our API monitoring. The real-time alerts saved us from a major outage last month. The dashboard is intuitive and the performance insights are invaluable.',
-      avatar: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400'
+      message: 'ATINAR helped us monitor our startup\'s APIs without breaking our budget. The free tier was perfect for our initial 3 endpoints, and the alerts saved us during our product launch.',
+      logo: 'https://via.placeholder.com/60x60/4F46E5/FFFFFF?text=TV'
     },
     {
       id: '2',
-      name: 'Michael Rodriguez',
-      company: 'DataSync Solutions',
+      name: 'Priya Patel',
+      company: 'CodeCraft Studios',
       rating: 5,
-      message: 'The best monitoring tool we\'ve used. Setup was incredibly easy, and the analytics help us optimize our API performance continuously. Customer support is top-notch.',
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400'
+      message: 'As a small development agency, we needed reliable monitoring for our clients. ATINAR\'s pricing is fair and the dashboard is intuitive. Our team loves the real-time alerts.',
+      logo: 'https://via.placeholder.com/60x60/059669/FFFFFF?text=CC'
     },
     {
       id: '3',
-      name: 'Emily Johnson',
-      company: 'CloudFirst Technologies',
+      name: 'Rajesh Kumar',
+      company: 'InnovateTech Pvt Ltd',
       rating: 5,
-      message: 'ATINAR\'s monitoring platform gives us complete visibility into our API ecosystem. The uptime tracking and performance metrics are exactly what we needed to maintain our SLAs.',
-      avatar: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400'
+      message: 'The free tier allowed us to test ATINAR with our core APIs. When we scaled up, the paid plans were reasonably priced. Great for Indian startups on a budget.',
+      logo: 'https://via.placeholder.com/60x60/DC2626/FFFFFF?text=IT'
     },
     {
       id: '4',
-      name: 'David Kim',
-      company: 'StartupLab',
+      name: 'Sneha Gupta',
+      company: 'WebFlow Technologies',
       rating: 5,
-      message: 'As a startup, reliability is crucial for us. ATINAR helps us maintain 99.9% uptime and gives our customers confidence in our platform. The pricing is very reasonable too.',
-      avatar: 'https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400'
+      message: 'Perfect for our small team! We started with the free plan and upgraded as we grew. The 5-minute intervals are sufficient for most of our client projects.',
+      logo: 'https://via.placeholder.com/60x60/7C3AED/FFFFFF?text=WF'
     },
     {
       id: '5',
-      name: 'Lisa Thompson',
-      company: 'Enterprise Corp',
-      rating: 5,
-      message: 'The detailed analytics and historical data help us make informed decisions about our infrastructure. ATINAR has become an essential part of our DevOps toolkit.',
-      avatar: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400'
+      name: 'Vikram Singh',
+      company: 'NextGen Apps',
+      rating: 4.5,
+      message: 'ATINAR understands the needs of Indian tech companies. The pricing is transparent, no hidden costs, and the support team is responsive. Highly recommended!',
+      logo: 'https://via.placeholder.com/60x60/EA580C/FFFFFF?text=NG'
     },
     {
       id: '6',
-      name: 'James Wilson',
-      company: 'API Masters',
+      name: 'Kavya Reddy',
+      company: 'CloudFirst Solutions',
       rating: 5,
-      message: 'The multi-location monitoring gives us global insights into our API performance. The alerting system is smart and doesn\'t overwhelm us with false positives.',
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400'
+      message: 'We\'ve been using ATINAR for 6 months now. Started with free tier, now on Pro plan. The uptime tracking helps us maintain our SLAs with confidence.',
+      logo: 'https://via.placeholder.com/60x60/0891B2/FFFFFF?text=CF'
     }
   ];
 
@@ -86,8 +86,8 @@ export function Testimonials() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-light-dark/80 dark:text-dark-primary/80 max-w-3xl mx-auto mb-8"
           >
-            Don't just take our word for it. Here's what developers and businesses 
-            around the world are saying about ATINAR.
+            Don't just take our word for it. Here's what Indian startups and small tech companies 
+            are saying about ATINAR.
           </motion.p>
 
           {/* Average Rating Display */}
@@ -104,7 +104,7 @@ export function Testimonials() {
               {averageRating.toFixed(1)} out of 5
             </div>
             <div className="text-light-dark/80 dark:text-dark-primary/80">
-              Based on {testimonials.length} reviews
+              Based on {testimonials.length} reviews from Indian companies
             </div>
           </motion.div>
         </div>
@@ -135,9 +135,9 @@ export function Testimonials() {
 
                 <div className="flex items-center space-x-4">
                   <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    src={testimonial.logo}
+                    alt={`${testimonial.company} logo`}
+                    className="w-12 h-12 rounded-lg object-cover"
                   />
                   <div>
                     <div className="font-semibold text-light-dark dark:text-dark-primary">
@@ -174,7 +174,7 @@ export function Testimonials() {
             className="text-xl text-white/80 dark:text-black/80 mb-8 max-w-2xl mx-auto"
           >
             Start monitoring your APIs today and experience the reliability 
-            that thousands of developers trust.
+            that Indian startups and small companies trust.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
