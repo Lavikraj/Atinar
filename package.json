@@ -4,8 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"vite\"",
-    "server": "node server.js",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -14,20 +13,13 @@
     "@hookform/resolvers": "^5.1.1",
     "@supabase/supabase-js": "^2.52.0",
     "@types/react-router-dom": "^5.3.3",
-    "bcrypt": "^6.0.0",
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
     "framer-motion": "^12.23.6",
-    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.344.0",
-    "pg": "^8.16.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.60.0",
     "react-router-dom": "^7.7.0",
     "recharts": "^3.1.0",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7",
     "zod": "^4.0.5"
   },
   "devDependencies": {
@@ -36,7 +28,6 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.18",
-    "concurrently": "^9.2.0",
     "eslint": "^9.9.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",

@@ -6,9 +6,9 @@ import { MouseFollower } from './components/ui/MouseFollower';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
-//import { Testimonials } from './pages/Testimonials';
+import { Testimonials } from './pages/Testimonials';
 import { Contact } from './pages/Contact';
-//import { Pricing } from './pages/Pricing';
+import { Pricing } from './pages/Pricing';
 import { Login } from './pages/auth/Login';
 import { Signup } from './pages/auth/Signup';
 import { Dashboard } from './pages/Dashboard';
@@ -34,8 +34,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            {/*<Route path="/testimonials" element={<Testimonials />} />*/}
-            {/*<Route path="/pricing" element={<Pricing />} />*/}
+            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

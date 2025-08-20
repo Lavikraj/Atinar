@@ -17,7 +17,7 @@ type LoginForm = z.infer<typeof loginSchema>;
 export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { signIn } = useAuth();
 
@@ -31,17 +31,18 @@ export function Login() {
 
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
-    setErrorMessage(null);
+    setError(null);
 
     try {
-      const result = await signIn(data.email, data.password);
-      if (result.error) {
-        setErrorMessage(result.error.message || 'Login failed.');
+      const { error } = await signIn(data.email, data.password);
+      
+      if (error) {
+        setError(error.message);
       } else {
         navigate('/dashboard');
       }
     } catch (err) {
-      setErrorMessage(err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.');
+      setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -94,13 +95,13 @@ export function Login() {
             </div>
 
             {/* Error Message */}
-            {errorMessage && (
+            {error && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-4"
+                className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4"
               >
-                <p className="text-red-800 dark:text-red-300 text-sm">{errorMessage}</p>
+                <p className="text-red-800 dark:text-red-300 text-sm">{error}</p>
               </motion.div>
             )}
 

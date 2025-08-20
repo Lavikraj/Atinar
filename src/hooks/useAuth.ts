@@ -1,139 +1,116 @@
-import { useState, useEffect } from "react";
-import { User } from "../types";
+import { useState, useEffect } from 'react';
+import { User as SupabaseUser } from '@supabase/supabase-js';
+import { supabase } from '../lib/supabase';
+import { User } from '../types';
 
-type AuthError = { message: string } | null;
-
-interface UseAuthReturn {
-  user: User | null;
-  token: string | null;
-  loading: boolean;
-  signUp: (email: string, password: string, username?: string) => Promise<{ data: any; error: AuthError }>;
-  signIn: (email: string, password: string) => Promise<{ data: any; error: AuthError }>;
-  signOut: () => Promise<{ error: AuthError }>;
-  updateProfile: (updates: { username?: string }) => Promise<{ data: any; error: AuthError }>;
-  getAuthHeaders: () => Record<string, string>;
-}
-
-const TOKEN_KEY = "atinar_auth_token";
-const USER_KEY = "atinar_user";
-
-export function useAuth(): UseAuthReturn {
-  const [user, setUser] = useState<User | null>(() => {
-    try {
-      const raw = localStorage.getItem(USER_KEY);
-      return raw ? (JSON.parse(raw) as User) : null;
-    } catch {
-      return null;
-    }
-  });
-  const [token, setToken] = useState<string | null>(() => {
-    try {
-      return localStorage.getItem(TOKEN_KEY);
-    } catch {
-      return null;
-    }
-  });
+export function useAuth() {
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [userProfile, setUserProfile] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchUserProfile = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('id', userId);
+    
+    if (!error && data && data.length > 0) {
+      setUserProfile(data[0]);
+    }
+  };
+
   useEffect(() => {
-    // In a real app, you might validate the token with the server here.
-    setLoading(false);
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        fetchUserProfile(session.user.id);
+      }
+      setLoading(false);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+        if (session?.user) {
+          fetchUserProfile(session.user.id);
+        } else {
+          setUserProfile(null);
+        }
+        setLoading(false);
+      }
+    );
+
+    return () => subscription.unsubscribe();
   }, []);
 
-  const persistAuth = (newToken: string | null, newUser: User | null) => {
-    try {
-      if (newToken) localStorage.setItem(TOKEN_KEY, newToken);
-      else localStorage.removeItem(TOKEN_KEY);
-      if (newUser) localStorage.setItem(USER_KEY, JSON.stringify(newUser));
-      else localStorage.removeItem(USER_KEY);
-    } catch {
-      // ignore
-    }
-    setToken(newToken);
-    setUser(newUser);
-  };
-
-  const parseJSONSafe = async (res: Response) => {
-    const text = await res.text();
-    return text ? JSON.parse(text) : {};
-  };
-
-  const getAuthHeaders = (): Record<string, string> => {
-    if (token) {
-      return { Authorization: `Bearer ${token}` };
-    }
-    return {};
-  };
-
-  // Base API URL from .env
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-
-  const signUp = async (email: string, password: string, username?: string) => {
-    try {
-      const res = await fetch(`${API_URL}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, username }),
-      });
-
-      const payload = await parseJSONSafe(res);
-      if (!res.ok) {
-        return { data: null, error: { message: payload?.error || "Signup failed" } };
+  const signUp = async (email: string, password: string) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          username: username
+        }
       }
-
-      // Expecting { token, user }
-      persistAuth(payload.token, payload.user || null);
-      return { data: payload, error: null };
-    } catch (err) {
-      return { data: null, error: { message: err instanceof Error ? err.message : "Signup error" } };
+    });
+    
+    // If signup successful and user is created, create profile
+    if (data.user && !error) {
+      const { error: profileError } = await supabase
+        .from('users')
+        .insert([{
+          id: data.user.id,
+          email: data.user.email!,
+          username: username || null
+        }]);
+      
+      if (profileError) {
+        console.error('Profile creation error:', profileError);
+      }
     }
+    
+    return { data, error };
   };
 
   const signIn = async (email: string, password: string) => {
-    try {
-      const res = await fetch(`${API_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const payload = await parseJSONSafe(res);
-      if (!res.ok) {
-        return { data: null, error: { message: payload?.error || "Login failed" } };
-      }
-
-      // Expecting { token, user }
-      persistAuth(payload.token, payload.user || null);
-      return { data: payload, error: null };
-    } catch (err) {
-      return { data: null, error: { message: err instanceof Error ? err.message : "Login error" } };
-    }
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    return { data, error };
   };
 
   const signOut = async () => {
-    persistAuth(null, null);
-    return { error: null };
+    const { error } = await supabase.auth.signOut();
+    setUserProfile(null);
+    return { error };
   };
 
   const updateProfile = async (updates: { username?: string }) => {
-    try {
-      const res = await fetch(`${API_URL}/profile`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json", ...getAuthHeaders() },
-        body: JSON.stringify(updates),
-      });
-
-      const payload = await parseJSONSafe(res);
-      if (!res.ok) {
-        return { data: null, error: { message: payload?.error || "Update failed" } };
-      }
-
-      setUser(payload.user || null);
-      return { data: payload, error: null };
-    } catch (err) {
-      return { data: null, error: { message: err instanceof Error ? err.message : "Update error" } };
+    if (!user) throw new Error('No user logged in');
+    
+    const { data, error } = await supabase
+      .from('users')
+      .update(updates)
+      .eq('id', user.id)
+      .select()
+      .single();
+    
+    if (!error && data) {
+      setUserProfile(data);
     }
+    
+    return { data, error };
   };
-
-  return { user, token, loading, signUp, signIn, signOut, updateProfile, getAuthHeaders };
+  return {
+    user,
+    userProfile,
+    loading,
+    signUp,
+    signIn,
+    signOut,
+    updateProfile,
+  };
 }

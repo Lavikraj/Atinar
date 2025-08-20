@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { 
   CheckCircle, 
@@ -10,7 +11,6 @@ import {
 import { ApiEndpoint } from '../../types';
 
 interface ApiTableProps {
-  // The endpoints data is now received as a prop from the parent component
   endpoints: ApiEndpoint[];
   onDelete: (id: string) => void;
   onViewDetails: (endpoint: ApiEndpoint) => void;

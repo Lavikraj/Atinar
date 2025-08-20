@@ -14,7 +14,7 @@ const apiSchema = z.object({
 type ApiForm = z.infer<typeof apiSchema>;
 
 interface AddApiFormProps {
-  onSubmit: (data: ApiForm) => Promise<void>; // This prop will be updated to call our backend
+  onSubmit: (data: ApiForm) => Promise<void>;
   isOpen: boolean;
   onClose: () => void;
 }
