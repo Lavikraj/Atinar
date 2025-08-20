@@ -47,11 +47,11 @@ export function Footer() {
                   About
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/testimonials" className="text-white/80 dark:text-dark-primary/80 hover:text-white dark:hover:text-dark-primary transition-colors font-sf-pro">
                   Testimonials
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/contact" className="text-white/80 dark:text-dark-primary/80 hover:text-white dark:hover:text-dark-primary transition-colors font-sf-pro">
                   Contact

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   X, 
-  CheckCircle, 
+  CheckCircle,
   XCircle, 
   Clock, 
   TrendingUp,
@@ -10,10 +10,10 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
   CartesianGrid, 
   Tooltip, 
   ResponsiveContainer,
@@ -27,7 +27,7 @@ interface ApiDetailsProps {
   onClose: () => void;
   getEndpointChecks: (endpointId: string) => Promise<ApiCheck[]>;
 }
-
+ 
 export function ApiDetails({ endpoint, onClose, getEndpointChecks }: ApiDetailsProps) {
   const [checks, setChecks] = useState<ApiCheck[]>([]);
   const [loading, setLoading] = useState(true);
@@ -79,8 +79,8 @@ export function ApiDetails({ endpoint, onClose, getEndpointChecks }: ApiDetailsP
     .slice(0, 24)
     .reverse()
     .map((check, index) => ({
-      time: new Date(check.checked_at).toLocaleTimeString('en-US', { 
-        hour: '2-digit', 
+      time: new Date(check.checked_at).toLocaleTimeString('en-US', {
+        hour: '2-digit',
         minute: '2-digit' 
       }),
       responseTime: check.response_time,
@@ -183,7 +183,7 @@ export function ApiDetails({ endpoint, onClose, getEndpointChecks }: ApiDetailsP
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="time" />
                       <YAxis />
-                      <Tooltip 
+                      <Tooltip
                         formatter={(value) => [`${value}ms`, 'Response Time']}
                         labelFormatter={(label) => `Time: ${label}`}
                       />
@@ -210,12 +210,13 @@ export function ApiDetails({ endpoint, onClose, getEndpointChecks }: ApiDetailsP
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={chartData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="time" />
+                      <XAxis dataKey="time" /> {/* Ensure `time` exists in chartData */}
                       <YAxis domain={[0, 1]} tickFormatter={(value) => value === 1 ? 'Up' : 'Down'} />
-                      <Tooltip 
+                      <Tooltip
                         formatter={(value) => [value === 1 ? 'Up' : 'Down', 'Status']}
-                        labelFormatter={(label) => `Time: ${label}`}
-                      />
+                        labelFormatter={(label) => `Time: ${label}`} 
+                        />
+                        {/* Ensure `label` exists in chartData */}  
                       <Area 
                         type="stepAfter" 
                         dataKey="status" 

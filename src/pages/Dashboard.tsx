@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
 import { useApiEndpoints } from '../hooks/useApiEndpoints';
 import { AddApiForm } from '../components/Dashboard/AddApiForm';
 import { ApiTable } from '../components/Dashboard/ApiTable';
@@ -10,9 +9,9 @@ import { StatsCards } from '../components/Dashboard/StatsCards';
 import { QuickActions } from '../components/Dashboard/QuickActions';
 import { EmptyState } from '../components/Dashboard/EmptyState';
 import { ApiEndpoint } from '../types';
+import { useAuth } from "../hooks/useAuth";
 
 export function Dashboard() {
-  const { user, userProfile } = useAuth();
   const { 
     endpoints, 
     loading, 
@@ -21,13 +20,16 @@ export function Dashboard() {
     deleteEndpoint, 
     getEndpointChecks,
     refetch
-  } = useApiEndpoints();
-  
+  } = useApiEndpoints(); // This hook should now use the new backend
+
+  const { user } = useAuth();
+  const username = user?.username || "User";
+
   const [showAddForm, setShowAddForm] = useState(false);
   const [selectedEndpoint, setSelectedEndpoint] = useState<ApiEndpoint | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const handleAddApi = async (data: { name: string; url: string; interval: number }) => {
+  const handleAddApi = async (data: { name: string; url: string; interval: number }) => { // Assuming data structure is the same
     await addEndpoint(data);
   };
 
@@ -39,7 +41,7 @@ export function Dashboard() {
 
   const handleViewDetails = (endpoint: ApiEndpoint) => {
     setSelectedEndpoint(endpoint);
-  };
+  }; // Assuming ApiEndpoint type is still relevant
 
   const handleRefresh = async () => {
     setIsRefreshing(true);
@@ -79,15 +81,15 @@ export function Dashboard() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold text-light-dark dark:text-dark-primary mb-2 font-sf-pro tracking-tight"
+            className="text-3xl font-bold text-light-dark dark:text-dark-primary mb-2 font-sf-pro tracking-tight" // Keep styling
           >
-            Welcome back, {userProfile?.username || user?.email?.split('@')[0]}!
+            Welcome back! {username}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-light-dark/80 dark:text-dark-primary/80 font-sf-pro"
+            className="text-light-dark/80 dark:text-dark-primary/80 font-sf-pro" // Keep styling
           >
             Monitor your APIs and keep track of their health and performance.
           </motion.p>
@@ -115,7 +117,7 @@ export function Dashboard() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6 flex items-center space-x-3"
+            className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6 flex items-center space-x-3" // Keep styling
           >
             <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400" />
             <span className="text-red-800 dark:text-red-300 font-sf-pro">{error}</span>
