@@ -60,7 +60,6 @@ export function Home() {
       {/* Hero Section */}
       <section className="relative galaxy-background py-20 lg:py-32 overflow-hidden">
         
-        {/* Floating elements for GTA effect */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{ 

@@ -81,7 +81,7 @@ export function Dashboard() {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl font-bold text-light-dark dark:text-dark-primary mb-2 font-sf-pro tracking-tight"
           >
-            Welcome back, {userProfile?.username || user?.email?.split('@')[0]}!
+            Welcome back, {userProfile?.username}!
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
