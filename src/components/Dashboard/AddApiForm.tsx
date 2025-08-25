@@ -8,7 +8,10 @@ import { Plus, X } from 'lucide-react';
 const apiSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   url: z.string().url('Please enter a valid URL'),
-  interval: z.number().min(1, 'Interval must be at least 1 minute').max(60, 'Interval cannot exceed 60 minutes'),
+  interval: z
+    .number()
+    .min(1, 'Interval must be at least 1 minute')
+    .max(60, 'Interval cannot exceed 60 minutes'),
 });
 
 type ApiForm = z.infer<typeof apiSchema>;
@@ -61,60 +64,81 @@ export function AddApiForm({ onSubmit, isOpen, onClose }: AddApiFormProps) {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-2xl p-8 max-w-md w-full"
+        className="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-md w-full shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Add New API</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Add New API</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
           >
-            <X className="h-5 w-5 text-gray-500" />
+            <X className="h-5 w-5 text-gray-500 dark:text-gray-400" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+          {/* API Name */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
               API Name
             </label>
             <input
               {...register('name')}
               type="text"
               id="name"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+                         bg-white text-gray-900 
+                         dark:bg-gray-800 dark:border-gray-600 dark:text-white
+                         focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               placeholder="My API"
             />
             {errors.name && (
-              <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name.message}</p>
             )}
           </div>
 
+          {/* API URL */}
           <div>
-            <label htmlFor="url" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="url"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
               API URL
             </label>
             <input
               {...register('url')}
               type="url"
               id="url"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+                         bg-white text-gray-900 
+                         dark:bg-gray-800 dark:border-gray-600 dark:text-white
+                         focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
               placeholder="https://api.example.com/health"
             />
             {errors.url && (
-              <p className="mt-1 text-sm text-red-600">{errors.url.message}</p>
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.url.message}</p>
             )}
           </div>
 
+          {/* Interval */}
           <div>
-            <label htmlFor="interval" className="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              htmlFor="interval"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+            >
               Check Interval (minutes)
             </label>
             <select
               {...register('interval', { valueAsNumber: true })}
               id="interval"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg 
+                         bg-white text-gray-900 
+                         dark:bg-gray-800 dark:border-gray-600 dark:text-white
+                         focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
             >
               <option value={1}>1 minute</option>
               <option value={5}>5 minutes</option>
@@ -124,22 +148,31 @@ export function AddApiForm({ onSubmit, isOpen, onClose }: AddApiFormProps) {
               <option value={60}>60 minutes</option>
             </select>
             {errors.interval && (
-              <p className="mt-1 text-sm text-red-600">{errors.interval.message}</p>
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+                {errors.interval.message}
+              </p>
             )}
           </div>
 
+          {/* Buttons */}
           <div className="flex space-x-4">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 
+                         text-gray-700 dark:text-gray-300 
+                         rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 
+                         transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg 
+                         hover:bg-blue-700 transition-colors 
+                         disabled:opacity-50 disabled:cursor-not-allowed 
+                         flex items-center justify-center space-x-2"
             >
               {isSubmitting ? (
                 <>

@@ -10,7 +10,7 @@ export function useAuth() {
 
   const fetchUserProfile = async (userId: string) => {
     const { data, error } = await supabase
-      .from('users')
+      .from('profiles')
       .select('*')
       .eq('id', userId);
     
@@ -59,10 +59,9 @@ export function useAuth() {
     // If signup successful and user is created, create profile
     if (data.user && !error) {
       const { error: profileError } = await supabase
-        .from('users')
+        .from('profiles')
         .insert([{
           id: data.user.id,
-          email: data.user.email!,
           username: username || null
         }]);
       
@@ -92,7 +91,7 @@ export function useAuth() {
     if (!user) throw new Error('No user logged in');
     
     const { data, error } = await supabase
-      .from('users')
+      .from('profiles')
       .update(updates)
       .eq('id', user.id)
       .select()
